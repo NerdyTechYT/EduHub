@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Video - EduHub</title>
+  <link rel="stylesheet" href="css/submit.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" id="home-button">EduHub</a>
+  </header>
+
+  <main>
+    <form id="video-form">
+      <input type="text" id="title" placeholder="Video Title" required>
+      <textarea id="description" placeholder="Video Description" required></textarea>
+
+      <label for="thumbnail-file">Select Thumbnail:</label>
+      <input type="file" id="thumbnail-file" accept="image/*" required>
+
+      <label for="video-file">Select Video (MP4):</label>
+      <input type="file" id="video-file" accept="video/mp4" required>
+
+      <button type="submit">Submit Video</button>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('video-form');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+
+      const thumbnailFile = document.getElementById('thumbnail-file').files[0];
+      const videoFile = document.getElementById('video-file').files[0];
+
+      if (!thumbnailFile || !videoFile) {
+        alert("Please select both a thumbnail and a video!");
+        return;
+      }
+
+      const readerThumb = new FileReader();
+      readerThumb.onload = function(event) {
+        const thumbnailData = event.target.result;
+
+        const readerVideo = new FileReader();
+        readerVideo.onload = function(e) {
+          const videoData = e.target.result;
+
+          let videos = JSON.parse(localStorage.getItem('videos')) || [];
+          videos.push({
+            title,
+            description,
+            videoUrl: videoData, // Base64 video
+            thumbnail: thumbnailData
+          });
+          localStorage.setItem('videos', JSON.stringify(videos));
+
+          alert('Video submitted!');
+          form.reset();
+        };
+
+        readerVideo.readAsDataURL(videoFile);
+      };
+
+      readerThumb.readAsDataURL(thumbnailFile);
+    });
+  </script>
+</body>
+</html>

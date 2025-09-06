@@ -1,0 +1,204 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #202124;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ff0000;
+  color: white;
+}
+
+.submit-btn {
+  background-color: white;
+  color: #ff0000;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #ffe5e5;
+}
+
+/* Main container */
+main {
+  padding: 2rem;
+}
+
+/* Homepage video grid */
+#video-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+/* Video card */
+.video-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 360px;   /* YouTube thumbnail width */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.video-card img {
+  width: 100%;
+  height: 202px; /* YouTube thumbnail height */
+  object-fit: cover;
+}
+
+.video-card h3 {
+  margin: 0.6rem 0 0.3rem 0.6rem;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.video-card h3 a {
+  color: #202124;
+  text-decoration: none;
+}
+
+.video-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.video-card p {
+  margin: 0 0.6rem 0.6rem 0.6rem;
+  font-size: 0.9rem;
+  color: #606060;
+}
+
+/* Delete button */
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  margin: 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #e60000;
+}
+
+/* Submission form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+form input, form textarea {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #ff0000;
+  outline: none;
+}
+
+form button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color: #e60000;
+}
+
+/* Video page styling */
+#video-page {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+#video-page h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+#video-page p {
+  font-size: 1rem;
+  color: #606060;
+  margin-bottom: 1rem;
+}
+
+#video-page video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: black;
+}
+
+/* Responsive grid */
+@media (max-width: 1100px) {
+  #video-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  #video-container {
+    grid-template-columns: 1fr;
+  }
+
+  .video-card {
+    width: 100%; /* full width on mobile */
+  }
+}
+
+/* Simple EduHub link */
+#home-button {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
